@@ -1,3 +1,4 @@
 supervisor
 pycrypto
 gevent
+gunicorn
