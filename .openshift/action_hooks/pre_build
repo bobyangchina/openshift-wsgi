@@ -8,9 +8,10 @@ if [ ! -d $OPENSHIFT_DATA_DIR/bin ]; then
   if [ ! -f $OPENSHIFT_DATA_DIR/bin/python ]; then
     # install python 2.7.6
     cd $OPENSHIFT_TMP_DIR
-    wget http://python.org/ftp/python/2.7.6/Python-2.7.6.tgz
-    tar zxf Python-2.7.6.tgz
-    cd Python-2.7.6
+    VERSION=$(wget http://www.python.org/ftp/python/ 2>/dev/null -O -| grep -o '2\.7\..' | tail -1)
+    wget http://python.org/ftp/python/$VERSION/Python-$VERSION.tgz
+    tar zxf Python-$VERSION.tgz
+    cd Python-$VERSION
     ./configure --prefix=$OPENSHIFT_DATA_DIR
     make install
   fi
