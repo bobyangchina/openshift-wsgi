@@ -8,7 +8,7 @@ if [ ! -d $OPENSHIFT_DATA_DIR/bin ]; then
   if [ ! -f $OPENSHIFT_DATA_DIR/bin/python ]; then
     # install python 2.7.x
     cd $OPENSHIFT_TMP_DIR
-    VERSION=$(wget http://www.python.org/ftp/python/ 2>/dev/null -O -| grep -o '2\.7\.[0-9]*' | tail -1)
+    VERSION=$(wget http://www.python.org/ftp/python/ 2>/dev/null -O -| grep -o '2\.7\.[0-9]*' | sort -t. -k3 -nr | head -1)
     wget http://python.org/ftp/python/$VERSION/Python-$VERSION.tgz
     tar zxf Python-$VERSION.tgz
     cd Python-$VERSION
